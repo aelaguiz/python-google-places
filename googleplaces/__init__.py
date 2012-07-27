@@ -259,7 +259,12 @@ class Place(object):
         self._id = place_data['id']
         self._reference = place_data['reference']
         self._name = place_data['name']
-        self._vicinity = place_data['vicinity']
+
+        if 'vicinity' in place_data:
+            self._vicinity = place_data['vicinity']
+        else:
+            self._vicinity = None
+
         self._geo_location = place_data['geometry']['location']
         self._rating = place_data.get('rating')
         self._types = place_data.get('types')
